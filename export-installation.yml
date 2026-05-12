@@ -18,6 +18,15 @@ resources:
   source:
     uri: ((pipeline-repo))
     branch: main
+- name: installation
+  type: s3
+  source:
+    access_key_id: ((s3-access-key-id))
+    secret_access_key: ((s3-secret-key))
+    bucket: ((platform-automation-bucket))
+    endpoint: 'http://10.0.0.250:9000'
+    disable_ssl: true
+    regexp: installation-(.*).zip
 jobs:
 - name: export-installation
   serial: true
