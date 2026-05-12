@@ -17,9 +17,8 @@ resources:
   type: git
   source:
     uri: ((pipeline-repo))
-    username: saravanansubbiah1
-    password: ((github-pat))
     branch: main
+    private_key: ((plat-auto-pipes-deploy-key.private_key))
 - name: installation
   type: s3
   source:
