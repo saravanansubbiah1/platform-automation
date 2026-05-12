@@ -1,0 +1,3 @@
+platform-automation-bucket: concourse-automation
+credhub-server: https://concourse-pat.vrack.vsphere.local:8844 
+opsman-url: https://opsman.vrack.vsphere.local
