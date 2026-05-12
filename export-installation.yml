@@ -17,6 +17,8 @@ resources:
   type: git
   source:
     uri: ((pipeline-repo))
+    username: saravanansubbiah1
+    password: ((github-pat))
     branch: main
 - name: installation
   type: s3
