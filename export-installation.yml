@@ -28,6 +28,10 @@ jobs:
         globs: ["*tasks*.zip"]
         unpack: true
     - get: env
+      name: git
+      source:
+        uri: ((pipeline-repo))
+        branch: main
     - task: export-installation
       image: platform-automation-image
       file: platform-automation-tasks/tasks/export-installation.yml
