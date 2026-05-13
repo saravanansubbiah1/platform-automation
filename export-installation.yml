@@ -20,7 +20,7 @@ resources:
     branch: main
     git_config:
     - name: core.sshCommand
-      value: ssh -o StrictHostKeyChecking=no
+      value: "ssh -o StrictHostKeyChecking=no"
     private_key: ((plat-auto-pipes-deploy-key.private_key))
 - name: installation
   type: s3
