@@ -1,0 +1,2 @@
+iaas: vsphere
+vm_id: /vcf-instance-1-datacenter/vm//ops-manager-vm
