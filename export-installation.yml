@@ -72,7 +72,7 @@ jobs:
   plan:
   - get: platform-automation-image
     resource: platform-automation
-      params:
+    params:
       globs: ["vsphere-platform-automation-image*.tar.gz"]
       unpack: true
   - get: platform-automation-tasks
