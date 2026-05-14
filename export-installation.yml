@@ -62,8 +62,6 @@ jobs:
     - task: export-installation
       image: platform-automation-image
       file: platform-automation-tasks/tasks/export-installation.yml
-      params:
-         OM_SKIP_SSL_VALIDATION: "true"
       input_mapping:
         env: interpolated-env
     - put: installation
