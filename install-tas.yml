@@ -51,8 +51,10 @@ jobs:
       file: platform-automation-tasks/tasks/download-product.yml
       input_mapping:
         config: config
+        vars: config
       params:
         CONFIG_FILE: download-tas.yml
+        VARS_FILE: terraform-outputs.yml
       output_mapping:
         downloaded-product: tas-product
         downloaded-stemcell: tas-stemcell
