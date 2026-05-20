@@ -37,6 +37,19 @@ jobs:
         globs: ["*tasks*.zip"]
         unpack: true
     - get: config
+    - task: credhub-interpolate
+      image: platform-automation-image
+      file: platform-automation-tasks/tasks/credhub-interpolate.yml
+      params:
+        CREDHUB_CLIENT: ((credhub-client))
+        CREDHUB_SECRET: ((credhub-secret))
+        CREDHUB_CA_CERT: ((credhub-ca-cert.certificate))
+        CREDHUB_SERVER: https://concourse-pat.vrack.vsphere.local:8844
+        PREFIX: /concourse/main
+      input_mapping:
+        files: config
+      output_mapping:
+        interpolated-files: interpolated-config
     - task: prepare-tasks-with-secrets
       image: platform-automation-image
       file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
@@ -50,11 +63,9 @@ jobs:
       image: platform-automation-image
       file: platform-automation-tasks/tasks/download-product.yml
       input_mapping:
-        config: config
-        vars: config
+        config: interpolated-config
       params:
         CONFIG_FILE: download-tas.yml
-        VARS_FILE: terraform-outputs.yml
       output_mapping:
         downloaded-product: tas-product
         downloaded-stemcell: tas-stemcell
@@ -62,7 +73,7 @@ jobs:
       image: platform-automation-image
       file: platform-automation-tasks/tasks/upload-stemcell.yml
       input_mapping:
-        env: config
+        env: interpolated-config
         stemcell: tas-stemcell
       params:
         ENV_FILE: env.yml
@@ -71,4 +82,4 @@ jobs:
       file: platform-automation-tasks/tasks/upload-and-stage-product.yml
       input_mapping:
         product: tas-product
-        env: config
+        env: interpolated-config
