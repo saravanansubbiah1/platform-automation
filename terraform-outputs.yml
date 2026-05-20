@@ -81,8 +81,3 @@ nsxt_ca_cert: |
   APrM4s57hJw0JYUcojFnilKOdkGTRhZxsZGbP2B+kYLPjYeKUI8rXLtqwsO43Jyb
   wLQYZszt
   -----END CERTIFICATE-----
-target: https://opsman.vrack.vsphere.local
-skip-ssl-validation: true
-username: 'ops_admin'
-password: 'opsman_3.3_2026'
-decryption-passphrase: 'opsman_3.3_2026'
