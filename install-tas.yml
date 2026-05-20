@@ -13,6 +13,15 @@ resources:
   source:
     product_slug: platform-automation
     api_token: ((pivnet-refresh-token))
+- name: config
+  type: git
+  source:
+    uri: ((pipeline-repo))
+    branch: main
+    git_config:
+    - name: core.sshCommand
+      value: "ssh -o StrictHostKeyChecking=no"
+    private_key: ((plat-auto-pipes-deploy-key.private_key))
 jobs: 
 - name: download-upload-and-stage-tas
   serial: true
