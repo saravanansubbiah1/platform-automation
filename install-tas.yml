@@ -57,7 +57,7 @@ jobs:
         VARS_FILES: vars/terraform-outputs.yml
       vars:
         pivnet_token: ((pivnet-refresh-token))
-        platform-automation-bucket: ((platform-automation-bucket-name))
+        platform-automation-bucket-name: ((platform-automation-bucket-name))
       output_mapping:
         downloaded-product: tas-product
         downloaded-stemcell: tas-stemcell
