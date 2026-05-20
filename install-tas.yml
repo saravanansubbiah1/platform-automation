@@ -48,7 +48,7 @@ jobs:
         tasks: platform-automation-tasks
       params:
         CONFIG_PATHS: config
-        VARS_PATHS: vars
+        VARS_PATHS: config/terrform-outputs.yml
     - task: download-tas
       image: platform-automation-image
       file: platform-automation-tasks/tasks/download-product.yml
