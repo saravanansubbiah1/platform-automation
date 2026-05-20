@@ -13,18 +13,18 @@ resources:
   source:
     product_slug: platform-automation
     api_token: ((pivnet-refresh-token))
-jobs:
+jobs: 
 - name: download-upload-and-stage-tas
   serial: true
   plan:
     - aggregate:
       - get: platform-automation-image
-        resource: platform-automation
+	    resource: platform-automation
         params:
           globs: ["vsphere-platform-automation-image*.tar.gz"]
           unpack: true
       - get: platform-automation-tasks
-        resource: platform-automation
+	    resource: platform-automation
         params:
           globs: ["*tasks*.zip"]
           unpack: true
