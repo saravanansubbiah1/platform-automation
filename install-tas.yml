@@ -49,6 +49,19 @@ jobs:
       params:
         CONFIG_PATHS: config
         VARS_PATHS: config
+    - task: credhub-interpolate
+      image: platform-automation-image
+      file: platform-automation-tasks/tasks/credhub-interpolate.yml
+      params:
+        CREDHUB_CLIENT: ((credhub-client))
+        CREDHUB_SECRET: ((credhub-secret))
+        CREDHUB_CA_CERT: ((credhub-ca-cert.certificate))
+        CREDHUB_SERVER: https://concourse-pat.vrack.vsphere.local:8844
+        PREFIX: /concourse/main
+      input_mapping:
+        files: config
+      output_mapping:
+        interpolated-files: interpolated-config
     - task: download-tas
       image: platform-automation-image
       file: platform-automation-tasks/tasks/download-product.yml
@@ -63,7 +76,7 @@ jobs:
       image: platform-automation-image
       file: platform-automation-tasks/tasks/upload-stemcell.yml
       input_mapping:
-        env: config
+        env: interpolated-config
         stemcell: tas-stemcell
       params:
         ENV_FILE: env.yml
