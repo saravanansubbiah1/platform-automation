@@ -42,19 +42,20 @@ jobs:
       file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
       input_mapping:
         tasks: platform-automation-tasks
+        config: config
+        vars: config
       output_mapping:
         tasks: platform-automation-tasks
       params:
         CONFIG_PATHS: config
+        VARS_PATHS: vars
     - task: download-tas
       image: platform-automation-image
       file: platform-automation-tasks/tasks/download-product.yml
       input_mapping:
         config: config
-        vars: config
       params:
         CONFIG_FILE: download-tas.yml
-        VARS_FILES: config/terraform-outputs.yml
       vars:
         pivnet_token: ((pivnet-refresh-token))
         platform-automation-bucket-name: ((platform-automation-bucket-name))
