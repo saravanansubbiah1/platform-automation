@@ -19,12 +19,12 @@ jobs:
   plan:
     - aggregate:
       - get: platform-automation-image
-	    resource: platform-automation
+	resource: platform-automation
         params:
           globs: ["vsphere-platform-automation-image*.tar.gz"]
           unpack: true
       - get: platform-automation-tasks
-	    resource: platform-automation
+	resource: platform-automation
         params:
           globs: ["*tasks*.zip"]
           unpack: true
