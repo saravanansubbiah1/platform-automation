@@ -54,7 +54,7 @@ jobs:
         vars: config
       params:
         CONFIG_FILE: download-tas.yml
-        VARS_FILES: vars/terraform-outputs.yml
+        VARS_FILES: config/terraform-outputs.yml
       vars:
         pivnet_token: ((pivnet-refresh-token))
         platform-automation-bucket-name: ((platform-automation-bucket-name))
