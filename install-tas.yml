@@ -85,4 +85,4 @@ jobs:
       file: platform-automation-tasks/tasks/upload-and-stage-product.yml
       input_mapping:
         product: tas-product
-        env: config
+        env: interpolated-config
