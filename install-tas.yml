@@ -48,7 +48,7 @@ jobs:
         tasks: platform-automation-tasks
       params:
         CONFIG_PATHS: config
-        VARS_PATHS: config/terraform-outputs.yml
+        VARS_PATHS: config
     - task: download-tas
       image: platform-automation-image
       file: platform-automation-tasks/tasks/download-product.yml
@@ -56,9 +56,6 @@ jobs:
         config: config
       params:
         CONFIG_FILE: download-tas.yml
-      vars:
-        pivnet_token: ((pivnet-refresh-token))
-        platform-automation-bucket-name: ((platform-automation-bucket-name))
       output_mapping:
         downloaded-product: tas-product
         downloaded-stemcell: tas-stemcell
